@@ -1,8 +1,9 @@
 import axios from "axios";
-const signupUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
-const signInUrl = "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
+const signupUrl =
+  "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=";
+const signInUrl =
+  "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=";
 const apiKey = "AIzaSyAa6KIva2yDn6_0ckG3q_B9rBt9m22fYDs";
-
 
 // async function authenticate (mode, email, password) {
 //     const url = `https://identitytoolkit.googleapis.com/v1/accounts:${mode}?key=${apiKey}`;
@@ -19,14 +20,16 @@ export const createUser = async (email, password) => {
     password: password,
     returnSecureToken: true,
   });
-  console.log(response.data)
+  const token = response.data.idToken;
+  return token;
 };
 
 export const login = async (email, password) => {
-    const response = await axios.post(`${signInUrl}${apiKey}`, {
-      email: email,
-      password: password,
-      returnSecureToken: true,
-    });
-    console.log(response.data)
-  };
+  const response = await axios.post(`${signInUrl}${apiKey}`, {
+    email: email,
+    password: password,
+    returnSecureToken: true,
+  });
+  const token = response.data.idToken;
+  return token;
+};
