@@ -16,8 +16,8 @@ function LoginScreen() {
       authCtx.authenticate(token);
     } catch (error) {
       Alert.alert("authentication failed!" ,"Check your entered email and password.");
+      setIsAuthenticating(false);
     }
-    setIsAuthenticating(false);
   }
 
   if (isAuthenticating) {

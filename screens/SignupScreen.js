@@ -1,9 +1,8 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import AuthContent from "../components/Auth/AuthContent";
 import LoadingOverlay from "../components/ui/LoadingOverlay";
 import { createUser } from "../util/auth";
 import { Alert } from "react-native";
-import { useContext } from "react/cjs/react.production.min";
 import { AuthContext } from "../store/auth-context";
 
 function SignupScreen() {
@@ -20,8 +19,8 @@ function SignupScreen() {
         "Authentication failed!",
         "Please check your entered data and try again."
       );
+      setIsAuthenticating(false);
     }
-    setIsAuthenticating(false);
   }
 
   if (isAuthenticating) {
